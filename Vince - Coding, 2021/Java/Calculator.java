@@ -6,6 +6,8 @@ import javax.swing.*;
 //import javax.swing.border.Border;
 
 public class Calculator {
+    private static int score = 1;
+
     public static void main (String[] args) {
         JFrame frame = new JFrame ("Calculator 300");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -116,14 +118,17 @@ public class Calculator {
             btntwo.addActionListener(event -> {
                 JButton b = (JButton) event.getSource();
                 String t = b.getText();
-                if (t.equals("Add +"))
-                    visor.setText (visor.getText() + "+");
-                else if (t.equals("Subtract -"))
-                    visor.setText (visor.getText() + "-");
-                else if (t.equals("Multiply *"))
-                    visor.setText (visor.getText() + "*");
-                else if (t.equals("Divide %"))
-                    visor.setText (visor.getText() + "/");
+                if (score < 2) {
+                    score = score + 1;
+                    if (t.equals("Add +"))
+                        visor.setText (visor.getText() + "+");
+                    else if (t.equals("Subtract -"))
+                        visor.setText (visor.getText() + "-");
+                    else if (t.equals("Multiply *"))
+                        visor.setText (visor.getText() + "*");
+                    else if (t.equals("Divide %"))
+                        visor.setText (visor.getText() + "/");
+                }
                 else if (t.equals("Decimal"))
                     visor.setText (visor.getText()+ ".");
                 else if (t.equals("Backspace")) {
